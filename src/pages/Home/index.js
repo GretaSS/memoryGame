@@ -1,7 +1,8 @@
 import React from "react";
 import {
     Header,
-    Cover
+    Cover,
+    Border
 }from '../../components';
 
 function Home (){
@@ -9,6 +10,7 @@ function Home (){
         <>
             <Header/>
             <Cover/>
+            <Border/>
         </>
     )
 }
