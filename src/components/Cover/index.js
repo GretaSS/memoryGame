@@ -1,23 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
     View
 }from '../../styled';
+import Players from '../Players';
 import BorderSize from "../BorderSize";
+import Border from '../Border';
+
 
 function Cover (){
-    return(
+   
+    return( 
         <View id='cover'>
             <View flex alignI='center' justC='space-around' >
-                <View flex fD='column' alignI='space-between' justC='center'>
-                    <View fontSize='25px'>Players</View>
-                    <select id='players'>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </View>
-                <BorderSize/>
+                <Players />
+                <BorderSize />
             </View>
+            <Border />
         </View>
     )
 }
