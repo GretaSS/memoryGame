@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import {
     View
 }from '../../styled';
+import {Context} from '../../Store'
 
 function Players (){
-    const [count, setCount] = useState([2,3,4]);
-    const Add = count.map(Add => Add)
+    const [state, dispatch] = useContext(Context)
     const handleNumberChange = e => {
-        console.log(count[e.target.value])
-    }
+        dispatch({type: 'SET', value: state.numbers[e.target.value]});
+        // console.log(state.numbers[e.target.value])
+    };
     
     return( 
         <View flex fD='column' alignI='space-between' justC='center'>
             <View fontSize='25px'>Players</View>
-            <select 
-                onChange={e => handleNumberChange(e)}
-                >
+            <select onChange={e => handleNumberChange(e)}>
                 {
-                    Add.map((num, key) => <option key={key} value={key}>
+                    state.numbers.map((num, key) => 
+                        <option key={key} value={key}>
                             {num}
                         </option>
                     )
