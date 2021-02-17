@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import {
     View
 }from '../../styled';
+import PlayersNumber from '../PlayersNumber';
 import {Context} from '../../Store'
 
 import styled from 'styled-components';
@@ -56,15 +57,16 @@ function Border(){
         />
     );
 
-    const [state, dispatch] = useContext(Context)
-    
+    const [state, dispatch] = useContext(Context);
+  
     return(
         <View id='border' flex fD='column' justC='center' p='100px 0px 50px 0px'>
             <View tAlign='center' fontSize='22px' op='0.5'> Border </View>
             <View flex fD='column' justC='center' m='0 auto' w='80%'>
-                <View>
-                    Players number: {state.value}
-                </View>
+                <PlayersNumber/> 
+                <View> Height: {state.height}</View>
+                <View> Width: {state.width}</View>
+                
                 <View flex fW='wrap' justC='space-around'>
                     {listItems}
                 </View>

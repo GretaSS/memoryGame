@@ -4,19 +4,24 @@ import {
 }from '../../styled';
 import {Context} from '../../Store'
 
-function Players (){
-    const [state, dispatch] = useContext(Context)
+function PlayersSelect (){
+    const [state, dispatch] = useContext(Context);
+    const players = [2,3,4]
+
     const handleNumberChange = e => {
-        dispatch({type: 'SET', value: state.numbers[e.target.value]});
-        // console.log(state.numbers[e.target.value])
+        dispatch({
+            type: 'SET_PLAYERS_VALUE', 
+            plValue: players[e.target.value]
+        });
+        // console.log(e.target.value)
     };
     
     return( 
         <View flex fD='column' alignI='space-between' justC='center'>
-            <View fontSize='25px'>Players</View>
+            <View fontSize='25px'> Players </View>
             <select onChange={e => handleNumberChange(e)}>
                 {
-                    state.numbers.map((num, key) => 
+                    players.map((num, key) => 
                         <option key={key} value={key}>
                             {num}
                         </option>
@@ -27,4 +32,4 @@ function Players (){
     )
 }
 
-export default Players;
+export default PlayersSelect;

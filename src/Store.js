@@ -2,8 +2,9 @@ import React, {createContext, useReducer} from "react";
 import Reducer from './Reducer'
 
 const initialState = {
-    numbers: [2,3,4],
-    value: 2,
+    plValue: 2,
+    width: 2,
+    height: 2,
     error: null
 };
 

@@ -1,25 +1,30 @@
 const Reducer = (state, action) => {
     switch (action.type) {
-        case 'GET':
+        case 'SET_PLAYERS_VALUE':
             return {
                 ...state,
-                value: action.value
+                plValue: action.plValue
             };
-        case 'SET':
+        case 'SET_Width':
             return {
                 ...state,
-                value: action.value
+                width: action.width
             };
-        case 'REMOVE':
+        case 'SET_Height':
             return {
                 ...state,
-                posts: state.posts.filter(post => post.id !== action.payload)
+                height: action.height
             };
-        case 'SET_ERROR':
-            return {
-                ...state,
-                error: action.payload
-            };
+        // case 'REMOVE':
+        //     return {
+        //         ...state,
+        //         posts: state.posts.filter(post => post.id !== action.payload)
+        //     };
+        // case 'SET_ERROR':
+        //     return {
+        //         ...state,
+        //         error: action.payload
+        //     };
         default:
             return state;
     }

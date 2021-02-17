@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     View
 }from '../../styled';
+import { Context } from '../../Store';
 
 function BorderWidth (){
+    const [state, dispatch] = useContext(Context);
+
+    const widthArr = [2,3,4,5,6,7,8];
+
+    const handleNumberChange = e => {
+        dispatch({
+            type: "SET_Width",
+            width: widthArr[e.target.value]
+        })
+    }
+
     return(
-        <View flex alignI='center' justC='space-around'>
-            <View fontSize='20px'>Width</View>
+        <View flex alignI='center' justC='space-between'>
+            <View fontSize='20px'> Width </View>
             <View id='height' m='0 10px'>
-                <select>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
+                <select onChange={e => handleNumberChange(e)}>
+                    {
+                        widthArr.map((num,key)=> 
+                            <option key={key} value={key}>
+                                {num}
+                            </option>
+                        )
+                    }
                 </select>
             </View>
         </View>
