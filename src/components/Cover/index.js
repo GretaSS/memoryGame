@@ -3,7 +3,7 @@ import {
     View
 }from '../../styled';
 import PlayersSelect from '../PlayersSelect';
-import BorderSize from "../BorderSize";
+import BorderSizeSelect from "../BorderSizeSelect";
 import Border from '../Border';
 
 import Store from '../../Store';
@@ -14,7 +14,7 @@ function Cover (){
         <Store>
             <View flex alignI='center' justC='space-around' >
                 <PlayersSelect />
-                <BorderSize />
+                <BorderSizeSelect />
             </View>
             <Border />
         </Store>

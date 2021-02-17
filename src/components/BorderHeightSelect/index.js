@@ -4,7 +4,7 @@ import {
 }from '../../styled';
 import { Context } from '../../Store';
 
-function BorderHeight (){
+function BorderHeightSelect (){
     const [state, dispatch] = useContext(Context);
 
     const heightArr = [2,3,4,5,6,7,8];
@@ -34,4 +34,4 @@ function BorderHeight (){
     )
 }
 
-export default BorderHeight;
+export default BorderHeightSelect;

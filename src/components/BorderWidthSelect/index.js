@@ -4,7 +4,7 @@ import {
 }from '../../styled';
 import { Context } from '../../Store';
 
-function BorderWidth (){
+function BorderWidthSelect (){
     const [state, dispatch] = useContext(Context);
 
     const widthArr = [2,3,4,5,6,7,8];
@@ -34,4 +34,4 @@ function BorderWidth (){
     )
 }
 
-export default BorderWidth;
+export default BorderWidthSelect;

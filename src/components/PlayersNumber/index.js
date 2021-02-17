@@ -4,7 +4,6 @@ import {
 }from '../../styled';
 import {Context} from '../../Store';
 
-
 function PlayersNumber(){
     const [state, dispatch] = useContext(Context);
 
@@ -12,16 +11,14 @@ function PlayersNumber(){
     plArr.length = state.plValue;
     
     return(
-        <View m='0 auto' w='85%'>
-            <View>
-                {
-                    plArr.map((num, key) => 
-                        <View key={key}>
-                            Player {num} : 
-                        </View>
-                    )
-                }
-            </View>
+        <View id='playersNumber'>
+            {
+                plArr.map((num, key) => 
+                    <View key={key}>
+                        Player {num} : 
+                    </View>
+                )
+            }
         </View>
     )
 }
