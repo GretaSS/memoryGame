@@ -3,7 +3,8 @@ import {
     View
 }from '../../styled';
 import PlayersNumber from '../PlayersNumber';
-import BorderSize from '../BorderSize';
+// import BorderSize from '../BorderSize';
+import GameOn from '../GameOn';
 
 function Border(){
     return(
@@ -17,7 +18,8 @@ function Border(){
         >
             <View fontSize='23px' op='0.5'> Border </View>
             <PlayersNumber/> 
-            <BorderSize/>
+            {/* <BorderSize/> */}
+            <GameOn/>
         </View>
     )
 }

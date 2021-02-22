@@ -11,14 +11,19 @@ function PlayersNumber(){
     plArr.length = state.plValue;
     
     return(
-        <View id='playersNumber'>
-            {
-                plArr.map((num, key) => 
-                    <View key={key}>
-                        Player {num} : 
-                    </View>
-                )
-            }
+        <View id='playersNumber' flex justC='space-between' m='0 auto' w='70%'>
+            <View>
+                {
+                    plArr.map((num, key) => 
+                        <View key={key}>
+                            Player {num} : 
+                        </View>
+                    )
+                }
+            </View>
+            <View>
+                Current Player: 
+            </View>
         </View>
     )
 }
