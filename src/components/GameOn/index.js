@@ -20,12 +20,8 @@ const Item = styled(View)`
 function GameOn(){
     const [state, dispatch] = useContext(Context);
     const pictures = cardImages.slice();
-    pictures.length = state.height * state.width;
+    pictures.length = 2;
     pictures.push(...pictures);
-
-    function shuffle(c){
-        return c.sort(()=> Math.random() - 0.5);
-    }
 
     function generate(p) {
         const c = p.map((imageURL,index) => ({
@@ -34,42 +30,58 @@ function GameOn(){
             isFlipped: false,
             canFlip: true
         }));
-        return shuffle(c)
-    }
-    // useEffect(()=> {
-        
-    // },[])
+        // console.log('c',c);
+        return c.sort(()=> Math.random() - 0.5);
+    };
+
+    useEffect(()=> {
+        if((state.height * state.width) % 2 !== 0 ){
+            pictures.length = 2;
+            alert("Multiple width and height values must be Even number")
+        }else{
+            pictures.length = (state.height * state.width)/2;
+        };
+        pictures.push(...pictures);
+        setCards(generate(pictures));
+    },[state.height, state.width]);
 
     //////////////////////////////////////////////////////
     const [cards, setCards] = useState(generate(pictures));
+    // const [canFlip, setCanFlip] = useState(false);
     const [firstCard, setFirstCard] = useState(null);
 	const [secondCard, setSecondCard] = useState(null);
 
-    function setCardIsFlipped(cardId, isFlipped) {
+    // useEffect(()=> {
+    //     for(let card of cards){
+    //         (card.isFlipped == true) ? setCanFlip(false) : setCanFlip(true);
+    //     }
+    // },[]);
+
+    function cardIsFlipped(cardId, isFlipped) {
 		setCards(prev => prev.map(c => {
 			if (c.id !== cardId)
 				return c;
 			return {...c, isFlipped};
 		}));
-	}
+	};
 
-    function setCardCanFlip(cardId, canFlip){
+    function cardCanFlip(cardId, canFlip){
         setCards(prev => prev.map(c=> {
             if(c.id !== cardId)
                 return c;
             return {...c, canFlip};
         }))
-    }
+    };
     
     function onSuccessGuess() {
         console.log('success');
-        setCardCanFlip(firstCard.id, false);
-        setCardCanFlip(secondCard.id, false);
-        setCardIsFlipped(firstCard.id, true);
-		setCardIsFlipped(secondCard.id, true);
+        cardCanFlip(firstCard.id, false);
+        cardCanFlip(secondCard.id, false);
+        cardIsFlipped(firstCard.id, true);
+		cardIsFlipped(secondCard.id, true);
         setFirstCard(null);
         setSecondCard(null);
-    }
+    };
 
     function onFailureGuess() {
         console.log('failure');
@@ -77,15 +89,15 @@ function GameOn(){
         const secondId = secondCard.id;
 
         setTimeout(() => {
-			setCardIsFlipped(firstId, false);
+			cardIsFlipped(firstId, false);
 		}, 1000);
 		setTimeout(() => {
-			setCardIsFlipped(secondId, false);
+			cardIsFlipped(secondId, false);
 		}, 1200);
 
         setFirstCard(null);
         setSecondCard(null);
-    } 
+    };
 
     useEffect(() => {
 		if (!firstCard || !secondCard)
@@ -94,11 +106,14 @@ function GameOn(){
 	}, [firstCard, secondCard]);
 
     function handleClick(pic) {
+        // if(!canFlip)
+        //     return;
 		if (!pic.canFlip)
 			return;
         (firstCard) ? setSecondCard(pic) : setFirstCard(pic);
-        setCardIsFlipped(pic.id, true);
-    }
+        cardIsFlipped(pic.id, true);
+    };
+    // console.log("cards",cards);
 
     return(
         <View id='gameOn' >
