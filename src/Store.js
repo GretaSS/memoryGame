@@ -1,10 +1,11 @@
 import React, {createContext, useReducer} from "react";
-import Reducer from './Reducer'
+import Reducer from './Reducer';
 
 const initialState = {
     plValue: 2,
     width: 2,
     height: 2,
+    current: "A",
     error: null
 };
 

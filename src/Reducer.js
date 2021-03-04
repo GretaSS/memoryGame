@@ -15,6 +15,11 @@ const Reducer = (state, action) => {
                 ...state,
                 height: action.height
             };
+        case 'SET_CURRENT_PLAYER':
+            return {
+                ...state,
+                current: action.current
+            };
         // case 'REMOVE':
         //     return {
         //         ...state,
