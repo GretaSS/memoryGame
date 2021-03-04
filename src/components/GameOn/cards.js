@@ -1,5 +1,5 @@
 const cards = [
-	"arbre.svg", "batwings.svg", "bell.svg", "bike.svg",
+	"arbre.svg", "bell.svg", "batwings.svg", "bike.svg",
 	'bridge.svg', 'Cerise.svg', 'ColourfulPlanet.svg', 'deer.svg',
 	'element-star.svg', 'Flower19.svg', 'Flower141.svg', 'Flower145.svg',
 	'Flower151.svg', 'Gat1.svg', 'JapaneseConstruction.svg', 'key.svg',
