@@ -13,6 +13,7 @@ const Item = styled(View)`
     width: 100px;
     height: 120px;
     margin: 5px 5px 0 0;
+    transition: transform 0.5s;
     ${ (props) => props.isFlipped === false ? `background: linear-gradient(0deg, rgba(255,33,33,1) 25%, rgba(252,164,41,1) 74%);
     ` : `transform: rotateY(180deg);` }
 `;
@@ -30,7 +31,6 @@ function GameOn(){
             isFlipped: false,
             canFlip: true
         }));
-        // console.log('c',c);
         return c.sort(()=> Math.random() - 0.5);
     };
 
@@ -47,15 +47,8 @@ function GameOn(){
 
     //////////////////////////////////////////////////////
     const [cards, setCards] = useState(generate(pictures));
-    // const [canFlip, setCanFlip] = useState(false);
     const [firstCard, setFirstCard] = useState(null);
 	const [secondCard, setSecondCard] = useState(null);
-
-    // useEffect(()=> {
-    //     for(let card of cards){
-    //         (card.isFlipped == true) ? setCanFlip(false) : setCanFlip(true);
-    //     }
-    // },[]);
 
     function cardIsFlipped(cardId, isFlipped) {
 		setCards(prev => prev.map(c => {
@@ -103,15 +96,16 @@ function GameOn(){
 		if (!firstCard || !secondCard)
 			return;
 		((firstCard.imageURL === secondCard.imageURL) && (firstCard.id !== secondCard.id)) ? onSuccessGuess() : onFailureGuess();
+        cardCanFlip(firstCard.id, true);
+        cardCanFlip(secondCard.id, true);
 	}, [firstCard, secondCard]);
 
     function handleClick(pic) {
-        // if(!canFlip)
-        //     return;
 		if (!pic.canFlip)
 			return;
         (firstCard) ? setSecondCard(pic) : setFirstCard(pic);
         cardIsFlipped(pic.id, true);
+        cardCanFlip(pic.id, false);
     };
     // console.log("cards",cards);
 
